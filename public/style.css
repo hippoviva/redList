@@ -1,0 +1,92 @@
+html {
+    background-color: black;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.pictures {
+    padding: 10px;
+    background-color: pink;
+    color: blue;
+}
+
+.inlineBlock {
+    display: inline-block;
+    padding: 5px;
+    margin-right: 10px
+}
+
+
+.attri {
+    font-size: 75%;
+    white-space: nowrap;
+    color: white;
+
+}
+
+/* Style the header */
+.header {
+    position: fixed;
+    top: 0;
+    background: #555;
+    color: white;
+
+    padding: 10px;
+    width: 97vw;
+}
+
+.links {
+    color: white;
+}
+
+/* Page content */
+.content {
+    padding: 16px;
+    top: 50px;
+    margin-top: 100px;
+    color: white;
+    background-color: black;
+
+    padding: 10px;
+    margin-left: 5;
+}
+
+#mainPicPop {
+    margin-left: 200px;
+}
+
+.displayClass {
+    display: none;
+}
+
+
+#iframe1 {
+    position: fixed;
+    margin-top: 0;
+    margin: 100px;
+    top: 0;
+    left: auto;
+    bottom: 0;
+    right: auto;
+
+
+    width: 640px;
+    height: 480px;
+    border: 3px solid #73AD21;
+
+    z-index: 100
+}
+
+.container {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item {
+    width: 10em;
+}

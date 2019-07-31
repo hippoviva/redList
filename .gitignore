@@ -1,0 +1,4 @@
+.env
+node_modules/
+scratch.js
+database_copy.db 
