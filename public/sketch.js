@@ -247,7 +247,7 @@
      const inputO = input;
      const arrayO = Object.values(inputO);
 
-     for (let i = 0; i < 1000;
+     for (let i = 0; i < 50;
          // arrayO.length - 1; 
          i++) {
          if (
@@ -303,13 +303,13 @@
      return finalUnique;
  }
  makeSelectsKingdom = function (input) {
+     let ki = document.getElementById("ki");
      let arr = [];
      for (let i = 0; i < input.length; i++) {
          arr.push(input[i].sp_kingdom);
      }
-     let uniqueItemsPre = [...new Set(arr)];
-     uniqueItemsPre = uniqueItemsPre.sort();
-     let uniqueItems = uniqueItemsPre;
+
+     const uniqueItems = getUniqueItemsForOptions(arr);
 
      for (let i = 0; i < uniqueItems.length; i++) {
          let option = document.createElement("option");
@@ -322,13 +322,13 @@
  // THis function makes the phylum selects for the pictures
  // base case is already defined in DOM
  makeSelectsPhylum = function (input) {
+     let ph = document.getElementById("ph");
      let arr = [];
      for (let i = 0; i < input.length; i++) {
          arr.push(input[i].sp_phylum);
      }
-     let uniqueItemsPre = [...new Set(arr)];
-     uniqueItemsPre = uniqueItemsPre.sort();
-     let uniqueItems = uniqueItemsPre;
+
+     const uniqueItems = getUniqueItemsForOptions(arr);
 
      for (let i = 0; i < uniqueItems.length; i++) {
          let option = document.createElement("option");
@@ -338,22 +338,31 @@
      }
  };
  makeSelectsClass = function (input) {
+     let cl = document.getElementById("cl");
      let arr = [];
      for (let i = 0; i < input.length; i++) {
          arr.push(input[i].sp_class);
      }
 
-     let uniqueItemsPre = [...new Set(arr)];
-     uniqueItemsPre = uniqueItemsPre.sort();
-     let uniqueItems = uniqueItemsPre;
+     const uniqueItems = getUniqueItemsForOptions(arr);
 
      for (let i = 0; i < uniqueItems.length; i++) {
+
          let option = document.createElement("option");
          option.value = uniqueItems[i];
          option.text = uniqueItems[i];
          cl.appendChild(option);
      }
  };
+
+ function getUniqueItemsForOptions(arr) {
+     let uniqueItemsPre = [...new Set(arr)];
+     uniqueItemsPre1 = uniqueItemsPre.sort();
+     return uniqueItemsPre1;
+
+ }
+
+
 
  //This function takes in the array created by picArray which
  // is a subset of the database and creates the DOM elements
@@ -467,21 +476,21 @@
      let url = `https://en.wikipedia.org/wiki/${passedName}`;
 
      if (document.getElementById("iframe1") === null) {
-         letPicDiv = document.getElementById("mainPopPic"); //passedId);
+         let PicDiv = document.getElementById("mainPopPic"); //passedId);
          let ifrm = document.createElement("iframe");
          ifrm.setAttribute("src", url);
          ifrm.id = "iframe1";
-         letPicDiv.appendChild(ifrm);
+         PicDiv.appendChild(ifrm);
          ifrm.setAttribute("sandbox", "");
      } else {
          frame = document.getElementById("iframe1");
          frame.parentNode.removeChild(frame);
-         letPicDiv = document.getElementById("mainPopPic");
+         let PicDiv = document.getElementById("mainPopPic");
          let ifrm = document.createElement("iframe");
          ifrm.setAttribute("src", url);
          ifrm.setAttribute("sandbox", "");
          ifrm.id = "iframe1";
-         letPicDiv.appendChild(ifrm);
+         PicDiv.appendChild(ifrm);
      }
  };
 
