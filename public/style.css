@@ -89,20 +89,16 @@ p {
     width: 10em;
 }
 
-
 .new {
-    position: fixed;
-    margin-top: 60px;
-    height: 20%;
-    width: 95%;
-    -webkit-overflow-scrolling: touch;
-    overflow: auto;
-    z-axis: -10;
-
-
+    position: relative;
+    z-index: 20;
 }
 
 #iframe1 {
-    width: 100vw;
-
+    position: fixed;
+    top: 20vh;
+    left: 5vw;
+    width: 80%;
+    height: 60vh;
+    z-index: 30;
 }

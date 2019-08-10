@@ -86,3 +86,8 @@ app.post("/wikipic", async (request, response) => {
     })
     .catch(err => console.error(err));
 });
+
+sum = function (a, b) {
+  return a + b;
+}
+module.exports = sum;

@@ -436,7 +436,7 @@
      // this function ceates an event listener for getting
      // the wikipedia.org page for the clicked picture.
      document
-         .querySelector("#myDiv")
+         .querySelector("body")
          .addEventListener("click", function (event) {
 
              if (document.getElementById("iframe1") != null) {
@@ -446,15 +446,12 @@
              } else {
                  if (event.target.tagName.toLowerCase() == "img") {
                      let pass = event.target.name;
-                     iframeFromPic(inputArr[pass].name, "picture" + pass);
+                     checkForIphone(inputArr[pass].name);
 
                  }
              }
          });
 
-     function makeIframe(ipass) {
-         let ifind = ipass;
-     }
  };
  const sleep = function (milliseconds) {
      var start = new Date().getTime();
@@ -465,15 +462,21 @@
      }
  };
 
-
+ function checkForIphone(namePass) {
+     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+         //do nothing its an iphone some code
+     } // some code..
+     else {
+         iframeFromPic(namePass);
+     }
+ }
  /// This code makes the iframe when user
  // clicks on a picture.  If picture is present it
  // removes it and makes new picture.
 
- function iframeFromPic(namePass, idName) {
-     const passedName = namePass;
-     const passedId = idName;
-     let url = `https://en.wikipedia.org/wiki/${passedName}`;
+ function iframeFromPic(namePass) {
+
+     let url = `https://en.wikipedia.org/wiki/${namePass}`;
 
      if (document.getElementById("iframe1") === null) {
          let PicDiv = document.getElementById("mainPopPic"); //passedId);
