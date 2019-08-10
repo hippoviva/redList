@@ -61,33 +61,33 @@ app.get("/dataUrlChange", (request, response) => {
 });
 
 
-app.post("/wikipic", async (request, response) => {
-  console.log("I got a multi  request!");
-  const data = request.body;
-  console.log(data);
+//app.post("/wikipic", async (request, response) => {
+//  console.log("I got a multi  request!");
+//  const data = request.body;
+//  console.log(data);
 
-  fetch(data.urlWikiPic)
-    //    .catch(err => console.error(err))
-    .then(res => res.text())
-    .then(body => {
-      //console.log(body, "body in wikipic");
-      const results = useData(body);
+//  fetch(data.urlWikiPic)
+//    .catch(err => console.error(err))
+//    .then(res => res.text())
+//    .then(body => {
+//      //console.log(body, "body in wikipic");
+//      const results = useData(body);
 
-      const info = addInfoToDb({
-        results,
-        data
-      });
+//      const info = addInfoToDb({
+//        results,
+//        data
+//      });
 
-      response.json({
-        results,
-        info,
-        status: "success"
-      });
-    })
-    .catch(err => console.error(err));
-});
+//     response.json({
+//       results,
+//      info,
+//     status: "success"
+//   });
+//  })
+//   .catch(err => console.error(err));
+//});
 
-sum = function (a, b) {
+const sum = function (a, b) {
   return a + b;
 }
 module.exports = sum;

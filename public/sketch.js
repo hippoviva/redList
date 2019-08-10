@@ -154,7 +154,7 @@
  //DOES INVOKE SELECT REDUCER FUNCTION PASSING SELECT OBJECT
  // THAT FIRED AND THE OPTION SELECTED.
 
- selectItem = function (selectItemName) {
+ const selectItem = function (selectItemName) {
      let selectorNew = selectItemName;
      let e = document.getElementById(selectorNew);
      let strUser = e.options[e.selectedIndex].text;
@@ -217,7 +217,7 @@
      button.style.display = "none";
  });
 
- dataFind = async function () {
+ const dataFind = async function () {
      const api_url = "/dataFind";
      const dbData = await fetch(api_url);
      const json = await dbData.json();
@@ -225,7 +225,7 @@
  };
 
  //master control function for pictures
- dataLoad = async function () {
+ const dataLoad = async function () {
      const dataPass = await dataFind();
      const picArray = await makePicArray(dataPass);
      const dom = await makeDom(picArray);
@@ -240,7 +240,7 @@
  // makes the array of scientific names and
  //URL for those items having pictures and redUpdate info.
 
- makePicArray = function (input) {
+ const makePicArray = function (input) {
      const PicArrayReturn = [];
      const NoURL =
          "upload.wikimedia.org/wikipedia/commons/7/74/Red_Pencil_Icon.png";
@@ -302,7 +302,7 @@
 
      return finalUnique;
  }
- makeSelectsKingdom = function (input) {
+ const makeSelectsKingdom = function (input) {
      let ki = document.getElementById("ki");
      let arr = [];
      for (let i = 0; i < input.length; i++) {
@@ -321,7 +321,7 @@
 
  // THis function makes the phylum selects for the pictures
  // base case is already defined in DOM
- makeSelectsPhylum = function (input) {
+ const makeSelectsPhylum = function (input) {
      let ph = document.getElementById("ph");
      let arr = [];
      for (let i = 0; i < input.length; i++) {
@@ -337,7 +337,7 @@
          ph.appendChild(option);
      }
  };
- makeSelectsClass = function (input) {
+ const makeSelectsClass = function (input) {
      let cl = document.getElementById("cl");
      let arr = [];
      for (let i = 0; i < input.length; i++) {
@@ -357,7 +357,7 @@
 
  function getUniqueItemsForOptions(arr) {
      let uniqueItemsPre = [...new Set(arr)];
-     uniqueItemsPre1 = uniqueItemsPre.sort();
+     let uniqueItemsPre1 = uniqueItemsPre.sort();
      return uniqueItemsPre1;
 
  }
@@ -368,7 +368,8 @@
  // is a subset of the database and creates the DOM elements
  // for those species in the picArray.
 
- makeDom = function (input) {
+ const makeDom = function (input) {
+     const myDiv = document.getElementById("myDiv");
      const inputArr = input;
      console.log("number of animals = ", inputArr.length);
      for (let i = 0; i <
@@ -440,7 +441,7 @@
          .addEventListener("click", function (event) {
 
              if (document.getElementById("iframe1") != null) {
-                 frame = document.getElementById("iframe1");
+                 const frame = document.getElementById("iframe1");
                  frame.parentNode.removeChild(frame);
 
              } else {
