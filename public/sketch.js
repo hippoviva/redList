@@ -464,11 +464,15 @@
  };
 
  function checkForIphone(namePass) {
+     let url = `https://en.wikipedia.org/wiki/${namePass}`;
      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+
+         openAndReuseOneTabPerAttribute("myextension-myattribute", url);
          //do nothing its an iphone some code
      } // some code..
      else {
-         iframeFromPic(namePass);
+         openAndReuseOneTabPerAttribute("myextension-myattribute", url);
+         //         iframeFromPic(namePass);
      }
  }
  /// This code makes the iframe when user
@@ -487,7 +491,7 @@
          PicDiv.appendChild(ifrm);
          ifrm.setAttribute("sandbox", "");
      } else {
-         frame = document.getElementById("iframe1");
+         const frame = document.getElementById("iframe1");
          frame.parentNode.removeChild(frame);
          let PicDiv = document.getElementById("mainPopPic");
          let ifrm = document.createElement("iframe");
@@ -504,8 +508,29 @@
  window.onkeyup = function (event) {
      if (event.keyCode == 27) {
          if (document.getElementById("iframe1") != null) {
-             frame = document.getElementById("iframe1");
+             const frame = document.getElementById("iframe1");
              frame.parentNode.removeChild(frame);
          }
      }
  };
+
+ function openAndReuseOneTabPerAttribute(attrName, url) {
+     let windowObjectReference = null; // global variable
+
+     if (windowObjectReference == null || windowObjectReference.closed)
+     /* if the pointer to the window object in memory does not exist
+        or if such pointer exists but the window was closed */
+
+     {
+         windowObjectReference = window.open(url, "special page");
+         /* then create it. The new window will be created and
+            will be brought on top of any other window. */
+     } else {
+         windowObjectReference.focus();
+         /* else the window reference must exist and the window
+            is not closed; therefore, we can bring it back on top of any other
+            window with the focus() method. There would be no need to re-create
+            the window or to reload the referenced resource. */
+     };
+
+ }
