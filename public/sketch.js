@@ -213,9 +213,9 @@
  // OF POSSIBLE KING-PHYLUM-CLASS
  const button = document.getElementById("makeDom");
  button.addEventListener("click", event => {
-     window.alert("You have to refresh the page to reset, Sorry");
-     window.location.reload(true);
-     button.style.display = "none";
+     if (window.confirm("This will refresh the page to reset.")) {
+         window.location.reload(true);
+     }
  });
 
  const selectMine = document.getElementById("selectHowMany");
