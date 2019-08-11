@@ -230,9 +230,11 @@
      let selectChoiceMade = s.options[s.selectedIndex].value;
      let howManyPicturesInArray;
      if (selectChoiceMade === "") {
-         howManyPicturesInArray = 0;
+         howManyPicturesInArray = 50;
      } else if (selectChoiceMade === "All") {
-         howManyPicturesInArray = "arrayO.length - 1";
+         howManyPicturesInArray = "All";
+         dataLoad(howManyPicturesInArray);
+         //         console.log(howManyPicturesInArray);
      } else {
          howManyPicturesInArray = selectChoiceMade;
          dataLoad(howManyPicturesInArray);
@@ -277,6 +279,10 @@
          "upload.wikimedia.org/wikipedia/commons/7/74/Red_Pencil_Icon.png";
      const inputO = input;
      const arrayO = Object.values(inputO);
+     console.log(arrayO.length - 1);
+     if (howManyPicturesInArray === "All") {
+         howManyPicturesInArray = arrayO.length - 1;
+     }
 
      for (let i = 0; i < howManyPicturesInArray;
          // arrayO.length - 1; 
