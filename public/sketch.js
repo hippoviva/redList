@@ -217,6 +217,36 @@
      button.style.display = "none";
  });
 
+ const selectMine = document.getElementById("selectHowMany");
+ selectMine.addEventListener("change", event => {
+     getSelectNumberOfPictures(event);
+     console.log("select changed");
+     //     button.style.display = "none";
+ });
+
+ function getSelectNumberOfPictures(event) {
+     let s = document.getElementById("selectHowMany");
+     let selectChoiceMade = s.options[s.selectedIndex].value;
+     let howManyPicturesInArray;
+     if (selectChoiceMade === "") {
+         howManyPicturesInArray = 0;
+     } else if (selectChoiceMade === "All") {
+         howManyPicturesInArray = "arrayO.length - 1";
+     } else {
+         howManyPicturesInArray = selectChoiceMade;
+         dataLoad(howManyPicturesInArray);
+     }
+     s.style.display = "none";
+     console.log(selectChoiceMade, howManyPicturesInArray);
+ }
+
+
+
+
+
+
+
+
  async function dataFind() {
      const api_url = "/dataFind";
      const dbData = await fetch(api_url);
@@ -225,9 +255,9 @@
  };
 
  //master control function for pictures
- const dataLoad = async function () {
+ const dataLoad = async function (howManyObjectsInArray) {
      const dataPass = await dataFind();
-     const picArray = await makePicArray(dataPass);
+     const picArray = await makePicArray(dataPass, howManyObjectsInArray);
      const dom = await makeDom(picArray);
      selectArray = makeSelectsObject(picArray);
      // console.log(selectArray);
@@ -240,14 +270,14 @@
  // makes the array of scientific names and
  //URL for those items having pictures and redUpdate info.
 
- const makePicArray = function (input) {
+ const makePicArray = function (input, howManyPicturesInArray) {
      const PicArrayReturn = [];
      const NoURL =
          "upload.wikimedia.org/wikipedia/commons/7/74/Red_Pencil_Icon.png";
      const inputO = input;
      const arrayO = Object.values(inputO);
 
-     for (let i = 0; i < 50;
+     for (let i = 0; i < howManyPicturesInArray;
          // arrayO.length - 1; 
          i++) {
          if (
