@@ -213,18 +213,19 @@
  // OF POSSIBLE KING-PHYLUM-CLASS
  const button = document.getElementById("makeDom");
  button.addEventListener("click", event => {
-     dataLoad();
+     window.alert("You have to refresh the page to reset, Sorry");
+     window.location.reload(true);
      button.style.display = "none";
  });
 
  const selectMine = document.getElementById("selectHowMany");
  selectMine.addEventListener("change", event => {
-     getSelectNumberOfPictures(event);
-     console.log("select changed");
+     getSelectNumberOfPictures();
+     //     console.log("select changed");
      //     button.style.display = "none";
  });
 
- function getSelectNumberOfPictures(event) {
+ function getSelectNumberOfPictures() {
      let s = document.getElementById("selectHowMany");
      let selectChoiceMade = s.options[s.selectedIndex].value;
      let howManyPicturesInArray;
@@ -237,7 +238,7 @@
          dataLoad(howManyPicturesInArray);
      }
      s.style.display = "none";
-     console.log(selectChoiceMade, howManyPicturesInArray);
+
  }
 
 
@@ -408,7 +409,7 @@
          const attributeString =
              "inlineBlock" +
              " " +
-             "sp_pictures" +
+             "sp_picturesDiv" +
              " " +
              inputArr[i].sp_kingdom +
              " " +
