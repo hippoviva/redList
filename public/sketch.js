@@ -270,6 +270,7 @@
 
  };
 
+
  // makes the array of scientific names and
  //URL for those items having pictures and redUpdate info.
 
@@ -278,15 +279,28 @@
      const NoURL =
          "upload.wikimedia.org/wikipedia/commons/7/74/Red_Pencil_Icon.png";
      const inputO = input;
-     const arrayO = Object.values(inputO);
-     console.log(arrayO.length - 1);
+     const arrayOPre = Object.values(inputO);
+     // console.log(arrayO.length - 1);
      if (howManyPicturesInArray === "All") {
          howManyPicturesInArray = arrayO.length - 1;
+     }
+     let arrayO = NaiveShuffle(arrayOPre)
+
+     function NaiveShuffle(arr) {
+         var i, temp, j, len = arr.length;
+         for (i = 0; i < len; i++) {
+             j = ~~(Math.random() * len);
+             temp = arr[i];
+             arr[i] = arr[j];
+             arr[j] = temp;
+         }
+         return arr;
      }
 
      for (let i = 0; i < howManyPicturesInArray;
          // arrayO.length - 1; 
          i++) {
+
          if (
              arrayO[i].imageURL === "" ||
              arrayO[i].imageURL === NoURL ||
