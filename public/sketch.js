@@ -396,8 +396,8 @@
          const artist = document.createElement("p");
 
          elemImg.setAttribute("src", "https://" + inputArr[i].PicURL);
-         elemImg.setAttribute("height", "180px");
-         elemImg.setAttribute("width", "240px");
+         //         elemImg.setAttribute("height", "180px");
+         elemImg.setAttribute("class", "pictureOfOrg");
          elemImg.setAttribute("name", i);
 
          artist.setAttribute("class", "attri");
