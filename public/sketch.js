@@ -19,21 +19,21 @@
 
 
  function makeOptionNew(kingSel, phylumSel, classSel, selector, query) {
-     if (selector == "ph") {
+     if (selector == "ph" || selector == "cl" || selector == "ki") {
          handleKingdom();
          handlePhylum();
          handleClass();
      }
-     if (selector == "cl") {
-         handleKingdom();
-         handlePhylum();
-         handleClass();
-     }
-     if (selector == "ki") {
-         handleKingdom();
-         handlePhylum();
-         handleClass();
-     }
+     // if (selector == "cl") {
+     //     handleKingdom();
+     //     handlePhylum();
+     //     handleClass();
+     // }
+     // if (selector == "ki") {
+     //     handleKingdom();
+     //     handlePhylum();
+     //     handleClass();
+     // }
 
      function handleKingdom() {
          let k = document.getElementById("ki");
@@ -171,11 +171,11 @@
          let f = document.getElementById("ki")
          let y = f.options[f.selectedIndex].text;
          strUser = y;
-         selectorNew = "ki"
+         selectorNew = "ki";
      }
 
 
-     const hidden = document.getElementsByClassName("sp_pictures");
+     const hidden = document.getElementsByClassName("sp_picturesDiv");
 
      //This part hides the pictures and puts them back
      for (let i = 0; i < hidden.length; i++) {
@@ -217,7 +217,7 @@
      button.style.display = "none";
  });
 
- const dataFind = async function () {
+ async function dataFind() {
      const api_url = "/dataFind";
      const dbData = await fetch(api_url);
      const json = await dbData.json();
@@ -258,11 +258,11 @@
              if (arrayO[i].redUpdate.main_common_name == null) {
                  arrayO[i].redUpdate.main_common_name = "---";
              }
-             blue(i);
+             makeArrayForPictures(i);
          }
      }
 
-     function blue(i) {
+     function makeArrayForPictures(i) {
          PicArrayReturn.push({
              name: arrayO[i].scientific_name,
              PicURL: arrayO[i].imageURL,
@@ -374,7 +374,7 @@
      console.log("number of animals = ", inputArr.length);
      for (let i = 0; i <
 
-         inputArr.length / 2; i++) {
+         inputArr.length; i++) {
          const attributeString =
              "inlineBlock" +
              " " +
@@ -471,8 +471,8 @@
          //do nothing its an iphone some code
      } // some code..
      else {
-         openAndReuseOneTabPerAttribute("myextension-myattribute", url);
-         //         iframeFromPic(namePass);
+         //  openAndReuseOneTabPerAttribute("myextension-myattribute", url);
+         iframeFromPic(url);
      }
  }
  /// This code makes the iframe when user
@@ -481,7 +481,8 @@
 
  function iframeFromPic(namePass) {
 
-     let url = `https://en.wikipedia.org/wiki/${namePass}`;
+     let url = namePass;
+     //`https://en.wikipedia.org/wiki/${namePass}`;
 
      if (document.getElementById("iframe1") === null) {
          let PicDiv = document.getElementById("mainPopPic"); //passedId);
