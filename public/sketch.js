@@ -24,16 +24,7 @@
          handlePhylum();
          handleClass();
      }
-     // if (selector == "cl") {
-     //     handleKingdom();
-     //     handlePhylum();
-     //     handleClass();
-     // }
-     // if (selector == "ki") {
-     //     handleKingdom();
-     //     handlePhylum();
-     //     handleClass();
-     // }
+
 
      function handleKingdom() {
          let k = document.getElementById("ki");
@@ -284,9 +275,9 @@
      if (howManyPicturesInArray === "All") {
          howManyPicturesInArray = arrayO.length - 1;
      }
-     let arrayO = NaiveShuffle(arrayOPre)
+     let arrayO = shufflePictureArray(arrayOPre)
 
-     function NaiveShuffle(arr) {
+     function shufflePictureArray(arr) {
          var i, temp, j, len = arr.length;
          for (i = 0; i < len; i++) {
              j = ~~(Math.random() * len);

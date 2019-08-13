@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Brooks EN Species</title>
+    <title>Smith Endangered</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
@@ -16,27 +16,31 @@
   <body>
     <div class="header" id="myHeader">
       <h2>Endangered Species</h2>
+      <p class="attri">Select how many images you want to display</p>
+      <p class="attri">Click on an image to link to the wikipedia page</p>
       <!---   <a class="links" href="/">enter</a> |
       <a class="links" href="all.html">request</a>
-   -->
-      <button class="button" id="makeDom">Reset</button>
-      <select id="selectHowMany"
+   --><div class="select-wrapper" >
+      <button class="button select:group"  id="makeDom">Reset</button>
+      <select id="selectHowMany" class="select-group"
         >How Many
         <option value="0">How Many</option>
         <option value="50">50</option>
         <option value="100">100</option>
-        <option value="200">500</option>
-        <option value="500">1,000</option>
+        <option value="200">200</option>
+        <option value="500">500</option>
       </select>
-      <select id="ki">
+      <select id="ki" class="select-group">
         <option value="">Select Kingdom</option>
       </select>
-      <select id="ph">
+      <select id="ph"  class="select-group">
         <option value="">Select Phylum</option>
       </select>
-      <select id="cl">
+      <select id="cl" class="select-group">
         <option value="">Select Class</option>
       </select>
+      </div>
+    </div>
     </div>
     <div id="mainPopPic" class="new"></div>
     <div id="myDiv" class="content"></div>

@@ -2,13 +2,20 @@ html {
     background-color: black;
 }
 
-p {
-    margin: 0;
-    padding: 0;
+h2 {
+    text-align: center;
+    margin: 3px;
 }
 
-h2 {
-    margin: 5px;
+p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.select-wrapper {
+    text-align: center;
 }
 
 .sp_picturesDiv {
@@ -59,6 +66,7 @@ h2 {
 .links {
     color: white;
 }
+
 
 /* Page content */
 .content {
