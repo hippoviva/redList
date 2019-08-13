@@ -211,10 +211,19 @@
 
  const selectMine = document.getElementById("selectHowMany");
  selectMine.addEventListener("change", event => {
+     hideWelcomeMessage();
      getSelectNumberOfPictures();
      //     console.log("select changed");
-     //     button.style.display = "none";
+     //  button.style.display = "none";
  });
+
+ function hideWelcomeMessage() {
+     const welcome = document.getElementById("welcome")
+     console.log("fired");
+     welcome.style.display = "none";
+
+ }
+
 
  function getSelectNumberOfPictures() {
      let s = document.getElementById("selectHowMany");

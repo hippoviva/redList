@@ -4,14 +4,21 @@ html {
 
 h2 {
     text-align: center;
-    margin: 3px;
+    margin-top: 3px;
+    margin-bottom: 0;
 }
 
 p {
     text-align: center;
     margin: 0;
     padding: 0;
+}
+
+.welcome {
     text-align: center;
+    background-color: black;
+    color: white;
+    margin-top: 90px;
 }
 
 .select-wrapper {
