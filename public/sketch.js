@@ -16,17 +16,17 @@
      .getElementById("cl") //classSelect -  cl
      .addEventListener("change", () => selectItem("cl")); //classSelect - cl
 
-
+ //Sorry giant ffunction that needs to be refactored.
 
  function makeOptionNew(kingSel, phylumSel, classSel, selector, query) {
      if (selector == "ph" || selector == "cl" || selector == "ki") {
-         handleKingdom();
-         handlePhylum();
-         handleClass();
+         remakeKingdomSelectOptions();
+         remakePhylumSelectOptions();
+         remakeClassSelectOptions();
      }
 
 
-     function handleKingdom() {
+     function remakeKingdomSelectOptions() {
          let k = document.getElementById("ki");
          while (k.hasChildNodes()) {
              k.removeChild(k.lastChild);
@@ -37,7 +37,7 @@
          });
      }
 
-     function handlePhylum() {
+     function remakePhylumSelectOptions() {
          let s = document.getElementById("ph");
          while (s.hasChildNodes()) {
              s.removeChild(s.lastChild);
@@ -47,7 +47,7 @@
          });
      }
 
-     function handleClass() {
+     function remakeClassSelectOptions() {
          let c = document.getElementById("cl");
          while (c.hasChildNodes()) {
              c.removeChild(c.lastChild);
@@ -147,7 +147,7 @@
 
  const selectItem = function (selectItemName) {
      let selectorNew = selectItemName;
-     let e = document.getElementById(selectorNew);
+     let e = document.getElementById(selectItemName);
      let strUser = e.options[e.selectedIndex].text;
      if (strUser == "All" || strUser == "Select Kingdom" || strUser == "Select Phylum" || strUser == "Select Class") {
          strUser = "";
@@ -164,8 +164,14 @@
          strUser = y;
          selectorNew = "ki";
      }
+     hidePictures(strUser);
 
 
+     //make select options
+     selectReducer(selectorNew, strUser);
+ };
+
+ function hidePictures(strUser) {
      const hidden = document.getElementsByClassName("sp_picturesDiv");
 
      //This part hides the pictures and puts them back
@@ -192,9 +198,8 @@
              }
          }
      }
-     //make select options
-     selectReducer(selectorNew, strUser);
- };
+ }
+
 
  // CODE TO MAKE THE DOM
  //ALL CODE BELOW HERE IS ONLY RUN AT INITIAL LOAD
@@ -261,14 +266,22 @@
  const dataLoad = async function (howManyObjectsInArray) {
      const dataPass = await dataFind();
      const picArray = await makePicArray(dataPass, howManyObjectsInArray);
-     const dom = await makeDom(picArray);
+     makeDom(picArray);
      selectArray = makeSelectsObject(picArray);
+     makeAllSelectsAtBegin(picArray);
      // console.log(selectArray);
+
+
+
+ };
+
+ function makeAllSelectsAtBegin(picArray) {
      makeSelectsKingdom(picArray);
      makeSelectsPhylum(picArray);
      makeSelectsClass(picArray);
 
- };
+
+ }
 
 
  // makes the array of scientific names and
